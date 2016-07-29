@@ -8,7 +8,7 @@ readme = "README.md"
 keywords = ["custom_derive", "derive", "error", "macro"]
 
 repository = "https://github.com/Xion/rust-error-derive"
-documentation = "https://xion.github.io/rust-error-derive/error_derive"
+documentation = "https://xion.github.io/rust-error-derive"
 
 [dev-dependencies]
 custom_derive = "0.1.1"

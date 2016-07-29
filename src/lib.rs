@@ -12,7 +12,6 @@ This also provides the requisite `Display` implementation.
 ```rust
 #[macro_use] extern crate custom_derive;
 #[macro_use] extern crate error_derive;
-
 # use std::error::Error as StdError;
 # use std::io;
 # use std::str::{from_utf8, Utf8Error};
