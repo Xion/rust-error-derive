@@ -7,8 +7,9 @@ This crate provides macros for deriving some useful methods and traits for Error
 #[macro_use] extern crate custom_derive;
 #[macro_use] extern crate error_derive;
 
+# use std::error::Error as StdError;
 # use std::io;
-# use std::str::Utf8Error;
+# use std::str::{from_utf8, Utf8Error};
 
 custom_derive! {
     #[derive(Debug, ErrorFrom, Error("very bad error"))]
@@ -19,7 +20,14 @@ custom_derive! {
 }
 
 # fn main() {
+let io_error = Error::Io(io::Error::last_os_error());
+let utf8_error = Error::Utf8(from_utf8(&[0, 142]).unwrap_err());
 
+assert_eq!("very bad error", io_error.description());
+assert_eq!("very bad error", utf8_error.description());
+
+assert!(io_error.cause().is_some());
+assert!(utf8_error.cause().is_some());
 # }
 ```
 */
