@@ -1,0 +1,24 @@
+language: rust
+
+before_script: >
+  pip install 'travis-cargo<0.2' --user && export PATH=$HOME/.local/bin:$PATH
+script:
+  - cargo build $CARGO_FLAGS --features "$CARGO_FEATURES"
+  - cargo test $CARGO_FLAGS --features "$CARGO_FEATURES"
+after_success: >
+  if [ "$TRAVIS_RUST_VERSION" = "1.10.0" ]; then travis-cargo doc-upload; fi
+
+rust:
+ - 1.9.0
+ - 1.10.0
+ - stable
+ - beta
+ - nightly
+env:
+  - >
+    CARGO_FLAGS="--verbose --no-default-features"
+    CARGO_FEATURES=std
+
+matrix:
+  allow_failues:
+    - rust: nightly
