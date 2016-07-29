@@ -45,6 +45,34 @@ This crate allows to derive the following traits:
 - `Error`, which implements the standard `Error` trait with a given description
 
 > **Note**: `Error` currently also derives `Display`, but this will most likely be decoupled in the future.
+
+# Usage without `custom_derive!`
+
+Although designed to be used with `custom_derive!`, all of the macros in this crate can be used without it.
+The following:
+
+```rust
+# #[macro_use] extern crate custom_derive;
+# #[macro_use] extern crate error_derive;
+# use std::io;
+custom_derive! {
+    #[derive(Debug, Error("just I/O error"))]
+    pub enum JustIoError { ThisOne(io::Error) }
+}
+# fn main() {}
+```
+
+Can also be writtten as:
+
+```rust
+# #[macro_use] extern crate custom_derive;
+# #[macro_use] extern crate error_derive;
+# use std::io;
+#[derive(Debug)]
+pub enum JustIoError { ThisOne(io::Error) }
+Error! { ("just I/O error") pub enum JustIoError { ThisOne(io::Error) } }
+# fn main() {}
+```
 */
 
 #[macro_use] mod util;
