@@ -4,3 +4,4 @@ version = "0.1.0"
 authors = ["Karol Kuczmarski <karol.kuczmarski@gmail.com>"]
 
 [dependencies]
+custom_derive = "0.1.1"
