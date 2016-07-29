@@ -1,7 +1,7 @@
 # `error_derive`
 
 [![Build Status](https://img.shields.io/travis/Xion/rust-error-derive.svg)](https://travis-ci.org/Xion/rust-error-derive)
-[![License](https://img.shields.io/github/license/Xion/rust-error-derive.svg)](https://github.com/Xion/rust-error-derive/blob/master/LICENSE)
+[![Crates.io](https://img.shields.io/crates/d/error-derive.svg?maxAge=2592000)](https://crates.io/crates/error-derive)
 
 This crate allows to automatically derive `Error` implementations
 through [`custom_derive!`](https://crates.io/crates/custom_derive).
