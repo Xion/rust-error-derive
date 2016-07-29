@@ -1,6 +1,6 @@
 [package]
 name = "error_derive"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Karol Kuczmarski <karol.kuczmarski@gmail.com>"]
 description = "Macros for deriving Error implementations through custom_derive!."
 license = "MIT"
