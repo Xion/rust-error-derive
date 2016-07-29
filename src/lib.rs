@@ -1,7 +1,13 @@
 /*!
-This crate provides macros for deriving some useful methods and traits for Error structs.
+This crate provides macros for deriving some useful methods and traits for Error enums.
+
+All of these macros are designed to be used with the
+[`custom_derive`](https://crates.io/crates/custom_derive) crate, though they can be used independent of it.
 
 # Example
+
+Derive implementation of the standard `Error` trait.
+This also provides the requisite `Display` implementation.
 
 ```rust
 #[macro_use] extern crate custom_derive;
@@ -30,6 +36,15 @@ assert!(io_error.cause().is_some());
 assert!(utf8_error.cause().is_some());
 # }
 ```
+
+# Overview
+
+This crate allows to derive the following traits:
+
+- `ErrorFrom`, which creates `From` trait implementations from each enum variants that wraps an inner `Error`
+- `Error`, which implements the standard `Error` trait with a given description
+
+> **Note**: `Error` currently also derives `Display`, but this will most likely be decoupled in the future.
 */
 
 #[macro_use] mod util;
