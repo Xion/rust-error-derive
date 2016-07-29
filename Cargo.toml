@@ -3,9 +3,12 @@ name = "error_derive"
 version = "0.1.0"
 authors = ["Karol Kuczmarski <karol.kuczmarski@gmail.com>"]
 description = "Macros for deriving Error implementations through custom_derive!."
-repository = "https://github.com/Xion/rust-error-derive"
 license = "MIT"
+readme = "README.md"
 keywords = ["custom_derive", "derive", "error", "macro"]
+
+repository = "https://github.com/Xion/rust-error-derive"
+documentation = "https://xion.github.io/rust-error-derive/error_derive"
 
 [dev-dependencies]
 custom_derive = "0.1.1"

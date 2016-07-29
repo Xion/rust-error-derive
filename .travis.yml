@@ -1,23 +1,27 @@
 language: rust
+sudo: false
 
-before_script: >
+before_script: |
   pip install 'travis-cargo<0.2' --user && export PATH=$HOME/.local/bin:$PATH
 script:
-  - cargo build $CARGO_FLAGS
-  - cargo test $CARGO_FLAGS
-after_success: >
-  if [ "$TRAVIS_RUST_VERSION" = "1.10.0" ]; then travis-cargo doc-upload; fi
+- cargo build $CARGO_FLAGS
+- cargo test $CARGO_FLAGS
+after_success:
+- travis-cargo --only stable doc-upload
 
 rust:
- - 1.9.0
- - 1.10.0
- - stable
- - beta
- - nightly
+- 1.9.0
+- 1.10.0
+- stable
+- beta
+- nightly
 env:
-  - >
-    CARGO_FLAGS="--verbose --no-default-features"
+  matrix:
+  - CARGO_FLAGS="--verbose --no-default-features"
+  global:
+    - TRAVIS_CARGO_NIGHTLY_FEATURE=nightly
+    - secure: n8SiMBrM6YZ9+oGcDg8DzvU/Pt/FZknbCdpvh6mKTbskbs0oEpLsz2/IiW3kGtntbiCzJsWqcHMuBSUrX6DC+2yW3UweTko5pNsEejglfnkN/QyZz3dEVP1/6rqR2uw6xeAbcKi1gcA0KZwhQuFWPcf9nyl47xkoGdiD2Bra/UUbAm3ilDoGCzwLYlJFx2VsTWgaJWjH1QEI+Yr6tvnEFZK2Yz66ve+d0bmq7qqTbH/Mj28ypCmha18B3dvfU2UrZOMEl+UXPQjwBpjURKp7l0V8tYeqr3kB8WJn6vikJuzIhwXL/YqM+LEVP6clzWmHpPFWc4PESQgQmKPyLlhyMh58iL2H70kQicGtc7hOZNvvS+FOo0mA1gzcpw0VXdWLQPvY/B76ltisI4wUd/VKOiAIDNvY89r/9/bezcEvPvFYHK6yL8ovta3JfB3Jomrh0/QdNRhqK4YPv5ryQmsEaCGKayWi4QyL4H7UwM6nO1/GVzqyNOy50D77w4VUWOZQDlY4JRjb5Dco32en8ROFFuz0dCSm9Qnf15RbYwOS5YWZIcedSY8hrKzKUhbyEK9xF4s8RbVF8v3SqItfZZHveAicF+qvcsy3waFwAX9/tUeqKRAh1HWDF4kgK+tkVQPm2ToNWcoV1UQguOWSnreX0tTj8+eyAQIpAtDJ/ogiMQM=
 
 matrix:
   allow_failues:
-    - rust: nightly
+  - rust: nightly

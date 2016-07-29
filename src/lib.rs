@@ -75,6 +75,8 @@ Error! { ("just I/O error") pub enum JustIoError { ThisOne(io::Error) } }
 ```
 */
 
+#![doc(html_root_uri = "https://xion.github.io/rust-error-derive")]
+
 #[macro_use] mod util;
 
 
